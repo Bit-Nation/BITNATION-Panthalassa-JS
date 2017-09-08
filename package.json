@@ -4,9 +4,14 @@
   "description": "A panthalassa implementation in js",
   "main": "index.js",
   "dependencies": {},
-  "devDependencies": {},
+  "devDependencies": {
+    "eslint": "^4.6.1",
+    "eslint-config-airbnb-base": "^12.0.0",
+    "eslint-plugin-import": "^2.7.0"
+  },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "./node_modules/.bin/eslint -c .eslintrc.json index.js --fix",
+    "cs-fix": "./node_modules/.bin/eslint -c .eslintrc.json index.js --fix"
   },
   "repository": {
     "type": "git",
