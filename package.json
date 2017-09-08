@@ -1,0 +1,26 @@
+{
+  "name": "panthalassa-js",
+  "version": "1.0.0",
+  "description": "A panthalassa implementation in js",
+  "main": "index.js",
+  "dependencies": {},
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Bit-Nation/BITNATION-Panthalassa-JS.git"
+  },
+  "keywords": [
+    "bitnation",
+    "panthalassa",
+    "panthalassa-js"
+  ],
+  "author": "Florian Lenz",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Bit-Nation/BITNATION-Panthalassa-JS/issues"
+  },
+  "homepage": "https://github.com/Bit-Nation/BITNATION-Panthalassa-JS#readme"
+}
