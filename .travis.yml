@@ -1,13 +1,28 @@
-env:
-  - DOCKER_COMPOSE_VERSION=3.3
+sudo: required
 
-before_install:
-  - sudo rm /usr/local/bin/docker-compose
-  - curl -L https://github.com/docker/compose/releases/download/${DOCKER_COMPOSE_VERSION}/docker-compose-`uname -s`-`uname -m` > docker-compose
-  - chmod +x docker-compose
-  - sudo mv docker-compose /usr/local/bin
+language: go
 
-script:
-  - docker-compose up -d
-  - docker-compose run node npm install
-  - docker-compose run node npm run test
+services:  
+    - docker
+
+env:  
+    global:
+        - DOCKER_VERSION=1.10.1-0~trusty
+        - DOCKER_COMPOSE_VERSION=3.3
+
+before_install:  
+    # list docker-engine versions
+    - apt-cache madison docker-engine
+
+    # upgrade docker-engine to specific version
+    - sudo apt-get -o Dpkg::Options::="--force-confnew" install -y docker-engine=${DOCKER_VERSION}
+
+    # reinstall docker-compose at specific version
+    - sudo rm -f /usr/local/bin/docker-compose
+    - curl -L https://github.com/docker/compose/releases/download/${DOCKER_COMPOSE_VERSION}/docker-compose-`uname -s`-`uname -m` > docker-compose
+    - chmod +x docker-compose
+    - sudo mv docker-compose /usr/local/bin
+
+script:  
+    - docker version
+    - docker-compose version
