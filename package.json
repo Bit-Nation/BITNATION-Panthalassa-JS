@@ -11,7 +11,9 @@
     "eslint": "^4.6.1",
     "eslint-config-airbnb-base": "^12.0.0",
     "eslint-plugin-import": "^2.7.0",
-    "mocha": "^3.5.0"
+    "mocha": "^3.5.0",
+    "sinon": "^3.2.1",
+    "sinon-chai": "^2.13.0"
   },
   "scripts": {
     "test": "./node_modules/.bin/eslint -c .eslintrc.json ./ --fix && ./node_modules/.bin/mocha --reporter spec",
