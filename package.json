@@ -3,7 +3,9 @@
   "version": "1.0.0",
   "description": "A panthalassa implementation in js",
   "main": "index.js",
-  "dependencies": {},
+  "dependencies": {
+    "stronglyt": "^1.1.0"
+  },
   "devDependencies": {
     "chai": "^4.1.2",
     "eslint": "^4.6.1",
