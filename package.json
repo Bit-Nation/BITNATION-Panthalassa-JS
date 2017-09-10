@@ -1,0 +1,37 @@
+{
+  "name": "panthalassa-js",
+  "version": "1.0.0",
+  "description": "A panthalassa implementation in js",
+  "main": "index.js",
+  "dependencies": {
+    "stronglyt": "^1.1.0"
+  },
+  "devDependencies": {
+    "chai": "^4.1.2",
+    "eslint": "^4.6.1",
+    "eslint-config-airbnb-base": "^12.0.0",
+    "eslint-plugin-import": "^2.7.0",
+    "mocha": "^3.5.0",
+    "sinon": "^3.2.1",
+    "sinon-chai": "^2.13.0"
+  },
+  "scripts": {
+    "test": "./node_modules/.bin/eslint -c .eslintrc.json ./ --fix && ./node_modules/.bin/mocha --reporter spec",
+    "cs-fix": "./node_modules/.bin/eslint -c .eslintrc.json ./ --fix"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Bit-Nation/BITNATION-Panthalassa-JS.git"
+  },
+  "keywords": [
+    "bitnation",
+    "panthalassa",
+    "panthalassa-js"
+  ],
+  "author": "Florian Lenz",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Bit-Nation/BITNATION-Panthalassa-JS/issues"
+  },
+  "homepage": "https://github.com/Bit-Nation/BITNATION-Panthalassa-JS#readme"
+}

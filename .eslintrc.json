@@ -1,0 +1,14 @@
+{
+    "parserOptions": {
+        "ecmaVersion": 5,
+        "sourceType": "module"
+    },
+    "extends": "airbnb-base",
+    "rules":{
+        "no-console":0,
+        "prefer-destructuring": ["error", {
+            "array": false,
+            "object": false
+        }]
+    }
+}
