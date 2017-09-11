@@ -13,4 +13,19 @@ mocha.describe('Test Types', () => {
       assert.throws(() => types.ethAddress('0x3d108D7d132e619B9b8aB37D7c8EFeb62'), Error, 'Expected ETHAddress got: 0x3d108D7d132e619B9b8aB37D7c8EFeb62');
     });
   });
+
+  mocha.describe('Test Promise', () => {
+    mocha.it('Successfully pass back promise', () => {
+      const p = new Promise(((fulfill, reject) => {
+        fulfill(true);
+        reject(false);
+      }));
+
+      expect(types.promise(p)).to.equal(p);
+    });
+
+    mocha.it('Throw Error when given value is not a Promise', () => {
+      assert.throws(() => types.promise(new Array([])), Error, 'Expected promise');
+    });
+  });
 });
