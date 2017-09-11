@@ -4,6 +4,7 @@ const chai = require('chai');
 const sinon = require('sinon');
 const assert = require('chai').assert;
 const repo = require('./../src/repo');
+const types = require('./../src/types');
 
 chai.use(sinonChai);
 
@@ -11,7 +12,7 @@ mocha.describe('Repo Tests', () => {
   mocha.describe('Save profile of user', () => {
     mocha.it('Save successfully', () => {
       // Types mock
-      const types = {
+      const t = {
         string: sinon.spy(),
         ethAddress: sinon.spy(),
       };
@@ -26,7 +27,7 @@ mocha.describe('Repo Tests', () => {
         stringify: sinon.spy(),
       };
 
-      const repoInstance = repo.repo(types, fsUtil, JSON);
+      const repoInstance = repo(t, fsUtil, JSON);
 
       const about = {
         pseudo: 'perastara',
@@ -37,10 +38,41 @@ mocha.describe('Repo Tests', () => {
 
       repoInstance.setAbout(about);
 
-      assert.isTrue(types.string.calledThrice);
-      assert.isTrue(types.ethAddress.calledOnce);
+      assert.isTrue(t.string.calledThrice);
+      assert.isTrue(t.ethAddress.calledOnce);
       assert.isTrue(fsUtil.writeFile.calledOnce);
       assert.isTrue(fsUtil.writeFile.calledWith('about.json', JSON.stringify(about)));
+    });
+  });
+  mocha.describe('Who am i', () => {
+    mocha.it('Fetch metadata about peer', () => {
+      // Promise mock
+      const expectedPromise = new Promise(((fulfill, reject) => {
+        fulfill('success');
+        reject(new Error('error'));
+      }));
+
+
+        // Ipfs Api mock
+      const ipfsApi = {
+        node: {
+          id() {
+            return expectedPromise;
+          },
+        },
+      };
+
+      // Ipfs node mock
+      const ipfsNode = new Promise(((fulfill, reject) => {
+        fulfill(ipfsApi);
+        reject(new Error('error'));
+      }));
+
+      // Repo
+      const repoInstance = repo(types, {}, {}, ipfsNode);
+
+      // Assertions
+      assert.isTrue(repoInstance.whoAmI().constructor === Promise);
     });
   });
 });
