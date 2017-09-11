@@ -8,4 +8,12 @@ types.ethAddress = (ethAddress) => {
   return ethAddress;
 };
 
+types.promise = (promise) => {
+  if (promise.constructor !== Promise) {
+    throw new Error('Expected promise');
+  }
+
+  return promise;
+};
+
 module.exports = types;
