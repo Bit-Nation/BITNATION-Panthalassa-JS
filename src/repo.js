@@ -1,6 +1,4 @@
-const types = require('./types');
-
-function repo(t, fsUtil, JSON) {
+module.exports = (t, fsUtil, JSON, ipfsNode) => {
   function setAbout(about) {
     // Validate about object
     t.string(about.pseudo);
@@ -12,11 +10,22 @@ function repo(t, fsUtil, JSON) {
     fsUtil.writeFile('about.json', JSON.stringify(about));
   }
 
+  /**
+   * Returns peer id of ipfs node
+   */
+  function whoAmI() {
+    t.promise(ipfsNode);
+    return ipfsNode
+      .then((ipfsApi) => {
+        t.promise(ipfsApi.node.id());
+      })
+      .catch((err) => {
+        throw err;
+      });
+  }
+
   return {
     setAbout,
+    whoAmI,
   };
-}
-
-
-module.exports.repo = repo;
-module.exports.repoFactory = fsUtil => repo(types, fsUtil, JSON);
+};
