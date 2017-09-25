@@ -1,2 +1,3 @@
-# BITNATION-Panthalassa-JS
-JS port of Panthalssa
+# Abandoned
+
+This implementation isn't used anymore. All the work is happening [here](https://github.com/Bit-Nation/BITNATION-Panthalassa-TS).
